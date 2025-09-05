@@ -48,13 +48,14 @@ CI only ensures compilation; PR reviews are skipped.
 
 ---
 
-##📸 Screenshots
+📸 Screenshots
 
 Screenshots will be added to the screenshots/ folder once implementation begins:
 
 - Menu interface
 
 - Unit status dashboard
+
 - Dispatch log view
 
 ---
