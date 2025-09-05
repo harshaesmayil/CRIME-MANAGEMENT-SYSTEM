@@ -55,7 +55,6 @@ Screenshots will be added to the screenshots/ folder once implementation begins:
 - Menu interface
 
 - Unit status dashboard
-
 - Dispatch log view
 
 ---
