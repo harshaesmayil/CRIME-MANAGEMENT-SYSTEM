@@ -8,7 +8,7 @@
 - Branch naming:
   - Gayathry → `feature/gayathry-dll-core`
   - Gouri → `feature/gouri-dispatch-priority`
-  - Hatim → `feature/hatim-units-stats`
+  - Hathim → `feature/hathim-units-stats`
   - Irene → `feature/irene-log-stack`
   - Harsha → `feature/harsha-menu-ui`
 
