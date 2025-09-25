@@ -48,15 +48,37 @@ CI only ensures compilation; PR reviews are skipped.
 
 ---
 
-📸 Screenshots
+##📸 Demo Output
 
-Screenshots will be added to the screenshots/ folder once implementation begins:
+- Menu interface and Adding Report
 
-- Menu interface
+ CRIME REPORTING AND RESPONSE SYSTEM 
+ 1. Add Report
+ 2. Delete Report
+ 3. View Pending
+ 4. Dispatch
+ 5. Mark Resolved
+ 6. Show Units
+ 7. Show Log
+ 8. Show Stats
+ 9. Exit
+ Choice: 1
+ Enter description: Theft
+ Enter severity ( 1 - 5 ( 5 being the greatest priority ) ): 1
+ Report 1 added.
 
 - Unit status dashboard
 
+--- Units ---
+Unit 1: Busy (Report Assigned)
+Unit 2: Free (Report None)
+Unit 3: Free (Report None)
+
 - Dispatch log view
+
+--- Dispatch Log ---
+Report 2 | Sev:5 | murder panampilly | Status: Resolved
+Report 1 | Sev:1 | Theft | Status: Resolved
 
 ---
 
