@@ -36,8 +36,10 @@ void dispatchpolice()
     struct Report* cur=head;
     struct Report* best=NULL;
 
-    while (cur!=NULL) {
-        if (cur->status==0) { // Pending
+    while (cur!=NULL)
+    {
+        if (cur->status==0) 
+        {
             if (best==NULL || cur->severity > best->severity) 
             {
                 best=cur;
@@ -46,20 +48,24 @@ void dispatchpolice()
         cur=cur->next;
     }
 
-    if (best==NULL) {
+    if (best==NULL) 
+    {
         printf("No pending reports.\n");
         return;
     }
 
     int unitid=-1;
-    for (int i=0; i<3; i++) {
-        if (units[i].busy==0) {
+    for (int i=0; i<3; i++) 
+    {
+        if (units[i].busy==0) 
+        {
             unitid=i;
             break;
         }
     }
 
-    if (unitid==-1) {
+    if (unitid==-1) 
+    {
         printf("No free units.\n");
         return;
     }
