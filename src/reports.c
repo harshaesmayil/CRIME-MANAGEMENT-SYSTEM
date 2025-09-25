@@ -56,8 +56,10 @@ void deletereport()
     scanf("%d", &id);
 
     struct Report* temp=head;
-    while (temp!=NULL) {
-        if (temp->id==id) {
+    while (temp!=NULL) 
+    {
+        if (temp->id==id) 
+        {
             if (temp->status==1) 
             {
                 printf("Cannot delete. Report is In Progress.\n");
@@ -88,11 +90,9 @@ void displaypendingreports()
     printf("\n--- Pending / In Progress Reports ---\n");
     while (temp!=NULL) 
     {
-        if (temp->status!=2) {
-            printf("ID:%d | Sev:%d | Status:%s | Desc:%s\n",
-                   temp->id, temp->severity,
-                   (temp->status==0) ? "Pending" : "In Progress",
-                   temp->description);
+        if (temp->status!=2) 
+        {
+            printf("ID:%d | Sev:%d | Status:%s | Desc:%s\n", temp->id, temp->severity, (temp->status==0) ? "Pending" : "In Progress", temp->description);
         }
         temp=temp->next;
     }
