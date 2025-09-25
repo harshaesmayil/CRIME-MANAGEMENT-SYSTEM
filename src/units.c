@@ -1,61 +1,65 @@
 #include <stdio.h>
 #include <string.h>
 
-struct Report {
+struct Report 
+{
     int id;
     char description[100];
     int severity;
-    int status;        // 0 = Pending, 1 = In Progress, 2 = Resolved
+    int status;
     int assignedUnit;
     struct Report *prev, *next;
 };
 extern struct Report* head;
 
-struct Unit {
+struct Unit 
+{
     int id;
     int busy;
-    int reportId;
+    int reportid;
 };
 
 struct Unit units[3];
 
-void initUnits() {
-    for (int i = 0; i < 3; i++) {
-        units[i].id = i + 1;
-        units[i].busy = 0;
-        units[i].reportId = -1;
+void initunits() {
+    for (int i=0; i<3; i++) 
+    {
+        units[i].id=i+1;
+        units[i].busy=0;
+        units[i].reportid=-1;
     }
 }
 
-void showUnitStatus() {
+void showunitstatus() 
+{
     printf("\n--- Units ---\n");
-    for (int i = 0; i < 3; i++) {
-        printf("Unit %d: %s (Report %s)\n",
-               units[i].id,
-               units[i].busy ? "Busy" : "Free",
-               (units[i].reportId == -1) ? "None" : "Assigned");
+    for (int i=0; i<3; i++) 
+    {
+        printf("Unit %d: %s (Report %s)\n", units[i].id, units[i].busy ? "Busy" : "Free", (units[i].reportid == -1) ? "None" : "Assigned");
     }
 }
 
-void showStatistics() {
+void showstatistics() 
+{
     extern struct Report* head;
-    int total = 0, pending = 0, inprog = 0, resolved = 0, busy = 0;
-    struct Report* cur = head;
+    int total=0, pending=0, inprog=0, resolved=0, busy=0;
+    struct Report* cur=head;
 
-    while (cur != NULL) {
+    while (cur!=NULL) 
+    {
         total++;
-        if (cur->status == 0) pending++;
-        else if (cur->status == 1) inprog++;
+        if (cur->status==0) pending++;
+        else if (cur->status==1) inprog++;
         else resolved++;
-        cur = cur->next;
+        cur=cur->next;
     }
 
-    for (int i = 0; i < 3; i++) {
-        if (units[i].busy != 0) busy++;
+    for (int i=0; i<3; i++) 
+    {
+        if (units[i].busy!=0) busy++;
     }
 
     printf("\n--- Statistics ---\n");
-    printf("Total:%d | Pending:%d | In Progress:%d | Resolved:%d\n",
-           total, pending, inprog, resolved);
+    printf("Total:%d | Pending:%d | In Progress:%d | Resolved:%d\n", total, pending, inprog, resolved);
     printf("Busy Units: %d / 3\n", busy);
 }
