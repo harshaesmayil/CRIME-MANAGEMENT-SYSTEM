@@ -9,7 +9,7 @@ struct Report
     int severity;
     int status;
     int assignedUnit;
-    struct Report *prev, *next;
+    struct Report *prev,*next;
 };
 
 struct Unit 
@@ -34,21 +34,21 @@ extern struct Log* logtop;
 void dispatchpolice() 
 {
     struct Report* cur=head;
-    struct Report* best=NULL;
+    struct Report* ptr=NULL;
 
     while (cur!=NULL)
     {
         if (cur->status==0) 
         {
-            if (best==NULL || cur->severity > best->severity) 
+            if (ptr==NULL || cur->severity > ptr->severity) 
             {
-                best=cur;
+                ptr=cur;
             }
         }
         cur=cur->next;
     }
 
-    if (best==NULL) 
+    if (ptr==NULL) 
     {
         printf("No pending reports.\n");
         return;
@@ -71,18 +71,18 @@ void dispatchpolice()
     }
 
     units[unitid].busy=1;
-    units[unitid].reportid=best->id;
-    best->assignedUnit=units[unitid].id;
-    best->status=1;
+    units[unitid].reportid=ptr->id;
+    ptr->assignedUnit=units[unitid].id;
+    ptr->status=1;
 
-    printf("Unit %d dispatched to Report %d.\n", units[unitid].id, best->id);
+    printf("Unit %d dispatched to Report %d.\n", units[unitid].id, ptr->id);
 }
 
 void markasresolved() 
 {
     int id;
     printf("Enter report ID to resolve: ");
-    scanf("%d", &id);
+    scanf("%d",&id);
 
     struct Report* cur=head;
     while (cur != NULL && cur->id!=id) 
@@ -94,7 +94,7 @@ void markasresolved()
         return;
     }
 
-    for (int i=0; i<3; i++) 
+    for (int i=0;i<3;i++) 
     {
         if (units[i].reportid==id) 
         {
