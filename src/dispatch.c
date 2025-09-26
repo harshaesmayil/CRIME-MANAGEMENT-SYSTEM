@@ -9,7 +9,7 @@ struct Report
     int severity;
     int status;
     int assignedUnit;
-    struct Report *prev,*next;
+    struct Report *prev,*link;
 };
 
 struct Unit 
@@ -24,7 +24,7 @@ struct Log
     int id;
     char description[100];
     int severity;
-    struct Log* next;
+    struct Log* link;
 };
 
 extern struct Report* head;
@@ -45,7 +45,7 @@ void dispatchpolice()
                 ptr=cur;
             }
         }
-        cur=cur->next;
+        cur=cur->link;
     }
 
     if (ptr==NULL) 
@@ -86,7 +86,7 @@ void markasresolved()
 
     struct Report* cur=head;
     while (cur != NULL && cur->id!=id) 
-        cur=cur->next;
+        cur=cur->link;
 
     if (cur==NULL || cur->status!=1) 
     {
@@ -109,7 +109,7 @@ void markasresolved()
     log->id=cur->id;
     strcpy(log->description, cur->description);
     log->severity=cur->severity;
-    log->next=logtop;
+    log->link=logtop;
     logtop=log;
 
     printf("Report %d resolved and logged.\n", id);
